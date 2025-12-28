@@ -16,7 +16,7 @@ export const Keyboard: React.FC = () => {
 
   const suggestions = allPlayers
     .filter(p => p.name.toLowerCase().includes(input.toLowerCase()) && input.length > 0)
-    .slice(0, 5) // Limit suggestions
+    .slice(0, 5) 
 
   return (
     <div className="keyboard" role="group" aria-label="Player guess input">

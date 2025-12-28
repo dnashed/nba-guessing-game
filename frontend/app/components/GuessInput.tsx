@@ -14,6 +14,7 @@ export const GuessInput: React.FC = () => {
     }
   }
 
+  console.log('All players count:', allPlayers.length)
   const suggestions = allPlayers
     .filter(p => p.name.toLowerCase().includes(input.toLowerCase()) && input.length > 0)
     .slice(0, 5)
@@ -37,7 +38,7 @@ export const GuessInput: React.FC = () => {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Enter NBA player name..."
             list="players"
-            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-lg"
+            className="text-gray-800 placeholder:text-gray-800 w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-lg"
             disabled={gameOver}
           />
           <datalist id="players">
