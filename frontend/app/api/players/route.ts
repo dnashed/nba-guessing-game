@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = 'https://mrqvyyymfqldnmzxmkmh.supabase.co'
-const supabaseKey = 'sb_publishable_k1OMCjHx0QOduqAGl2eHqg_06yAqajD'
+const supabaseUrl = process.env.SUPABASE_URL || 'https://placeholder.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY || 'placeholder-key'
+
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 export async function GET() {
