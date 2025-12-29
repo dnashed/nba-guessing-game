@@ -131,7 +131,7 @@ export const GameBoard: React.FC = () => {
           <h3 className={`text-xl font-bold mb-2 ${
             gameWon ? 'text-green-800' : 'text-red-800'
           }`}>
-            {gameWon ? '🎉 Congratulations! You Won!' : '💔 Game Over'}
+            {gameWon ? '🎉 Congratulations! You Won!' : '🥀 Game Over'}
           </h3>
           <p className="text-gray-700">
             The correct player was: <span className="font-semibold text-gray-900">{targetPlayer?.name}</span>
