@@ -1,0 +1,37 @@
+name: Update NBA Player Data
+
+on:
+  schedule:
+    # runs daily at 3 AM UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          cd data_stuff
+          pip install kagglehub pandas python-dotenv supabase numpy
+      
+      - name: Run data update script
+        env:
+          NBA_TOKEN: ${{ secrets.NBA_TOKEN }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          cd data_stuff
+          python supabase_upload.py
+      
+      - name: Log completion
+        run: echo "NBA player data updated successfully at $(date)"
